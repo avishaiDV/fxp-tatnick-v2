@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=100">
+    <base href=""><!--[if IE]></base><![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="https://static.fcdn.co.il/css_static_main/logo512.png">
+    <meta property="og:type" content="article">
+    <link rel="stylesheet" type="text/css" href="https://static.fcdn.co.il/dyn/projects/css/variables.css?v0.02=4120.518">
+    <link rel="stylesheet" type="text/css" href="https://static.fcdn.co.il/dyn/projects/css/desktop/components/fxp_fonts.css?v0.4=4120.518">
+    <link rel="stylesheet" type="text/css" href="https://static.fcdn.co.il/dyn/projects/css/desktop/areas/editor.css?v0.02=4120.518">
+    <link rel="stylesheet" type="text/css" href="https://static.fcdn.co.il/dyn/projects/css/desktop/mainfxp.css?v0.21=4120.518">
+    <link rel="stylesheet" type="text/css" href="https://static.fcdn.co.il/dyn/projects/css/desktop/components/fxp_buttons.css?v0.05=4120.518">
+    <link rel="stylesheet" type="text/css" href="https://static.fcdn.co.il/dyn/projects/css/desktop/components/fxp_menus.css?v0.10=4120.518">
+    <link rel="stylesheet" href="https://static.fcdn.co.il/dyn/projects/css/usermarkup.css?v1.10=4120.518">
+    <link rel="stylesheet" type="text/css" href="https://static.fcdn.co.il/dyn/projects/css/desktop/css-library.css?v0.06=4120.518">
+    <link rel="stylesheet" type="text/css" href="https://static.fcdn.co.il/dyn/projects/css/desktop/header_2020.css?v1.31=4120.518">
+    <link rel="stylesheet" type="text/css" href="https://static.fcdn.co.il/dyn/projects/css/desktop/forumhome_2020.css?v3.25=4120.518">
+    <link href="https://www.fxp.co.il/clientscript/awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://static.fcdn.co.il/dyn/projects/css/desktop/showthread-10.6.css?v1.712=4120.518">
+    <link rel="stylesheet" type="text/css" href="https://static.fcdn.co.il/dyn/projects/desktopshowthread/d_thread_n1.css?v2.315=4120.518">
+    <script src="https:https://connect.facebook.net/en_US/sdk.js?hash=9be46a1fbfe2072f18a446cfa081a0bf" async="" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://cdn.viglink.com/api/vglnk.js"></script><script type="text/javascript" async="" src="https://static.fcdn.co.il/counters.js?t=1755797099"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https:https://connect.facebook.net/en_US/fbevents.js"></script><script async="" type="text/javascript" src="https:https://www.googletagservices.com/tag/js/gpt.js"></script><script type="text/javascript" src="https://static.fcdn.co.il/clientscript/yui-2.9.js"></script>
+    <style>
+    .wallavideo{
+    width:640px;
+    height:385px;
+    }
+    </style>
+    <style>
+    div.wysiwyg_block > .blockbody.formcontrols {
+    box-shadow: none !important;
+    padding-top: 0 !important;
+    background: unset !important;
+    }
+    </style>
+    <!-- Facebook Pixel Code -->
+    <style>
+    #tbl-next-up.tbl-next-up-position-right {
+    right: unset !important;
+    left: 0 !important;
+    }
+    </style>
+    <style>
+    .content {
+    font-family: var(--fxp-font-family);
+    }
+    </style>
+    <style>
+    html {
+    scroll-padding-top: 70px; /* height of sticky header */
+    }
+    </style>
+<link rel="stylesheet" type="text/css" href="https://static.fcdn.co.il/dyn/projects/nagish/nagish.css?v=12.nagish_e.css"><link rel="stylesheet" type="text/css" href="https://static.fcdn.co.il/dyn/projects/nagish/nagish_e.css?v=1.1"><script>function lockThread() {<br>        $.ajax({<br>            url: `newreply.php?do=postreply&t=${THREAD_ID_FXP}`,<br>            type: "POST",<br>            data: {<br>                message: 'הה',<br>                message_backup: 'הה',<br>                wysiwyg: 1,<br>                loggedinuser: USER_ID_FXP,<br>                securitytoken: SECURITYTOKEN,<br>                parseurl: 1,<br>                signature: 1,<br>                ajax: 1,<br>                p: 'who cares',<br>                openclose: 1,<br>                do: 'postreply'<br>            },<br>            success: function (succ) {<br>                console.log(document.title.split(' - ')[0]);<br>                console.log(`${THREAD_ID_FXP}: posting and lock: success!`);<br>                $.ajax({<br>                    url: 'postings.php',<br>                    type: "POST",<br>                    data: {<br>                        title: document.title.split(' - ')[0],<br>                        destforumid: 6852,<br>                        redirecttitle: document.title.split(' - ')[0],<br>                        securitytoken: SECURITYTOKEN,<br>                        t: THREAD_ID_FXP,<br>                        s: null,<br>                        do: 'domovethread'<br>                    },<br>                    success: function (succ) {<br>                        console.log(`${THREAD_ID_FXP}: move to ${succ.match(/forumname = "(.*)"/)[1]}: success!`);<br>                        location.reload();<br>                    }<br>                });<br>            }<br>        });<br>    }</script><script src="https:https://cdn.onesignal.com/sdks/OneSignalPageSDKES6.js?v=151606" async=""></script><style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{0%{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+    
+    .fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{0%{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+    
+    .fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:https://connect.facebook.net/rsrc.php/v4/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:https://connect.facebook.net/rsrc.php/v4/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:https://connect.facebook.net/rsrc.php/v4/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:https://connect.facebook.net/rsrc.php/v4/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https:https://connect.facebook.net/rsrc.php/v4/ya/r/3rhSv5V8j3o.gif) #fff no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100%;position:absolute;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:https://connect.facebook.net/rsrc.php/v4/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:https://connect.facebook.net/rsrc.php/v4/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
+    
+    .fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}
+    </style>
+    
+</head>    
+  
+      
+<body>
+  <div id="postlist" class="postlist restrain">
+  <ol id="posts" class="posts" start="1">
+  
+  
+  
+  <li class="postbit postbitim postcontainer" id="post_224559732">
+  <!-- New design posthead(date and postid) -->	
+  <!-- End of new design posthead(date and postid) -->
+  <div class="userinfo" style="width:978px">
+  <div class="user-picture-holder" data-user-id="1195305">
+  <div class="user_pic_1195305">
+  <img src="https://i.imagesup.co/sz/600x-/images2/1195305_79ed6578-f542-4997-9851-b67e086a0cb2.jpg" alt="הסמל האישי שלavishaiUniverse" title="הסמל האישי שלavishaiUniverse" data-ll-status="loading" class="loading">
+  </div>
+  </div>
+  <div style="position:absolute; font-size:12px; font-weight:bold; text-align:left; color:#6D6D6D;
+  left:10px;
+  ">
+  <div style="
+  float:left;
+  padding: 3px 20px 3px 18px;     
+  background: url(https://static.fcdn.co.il/images_new/postsm.svg) no-repeat left;     
+  background-size: 16px;
+  ">19,257</div>
+  <div style="
+  float:left;
+  padding: 3px 20px 3px 18px;     
+  background: url(https://static.fcdn.co.il/images_new/lovered.svg) no-repeat left;
+  background-size: 16px;
+  height:14px;
+  ">4,089</div>
+  <div style="
+  float:left;
+  padding: 3px 20px 3px 18px;     
+  background: url(https://static.fcdn.co.il/images_new/date.svg) no-repeat left;
+  background-size: 16px;
+  height:14px;
+  ">07-10-16</div>
+  <div style="
+  float:left;
+  padding: 3px 20px 3px 18px;
+  background: url(https://static.fcdn.co.il/images_new/male-m.svg)  no-repeat left;
+  background-size: 16px;
+  height:14px;
+  ">שם המשתמש</div>
+  <div class="postfollow  hidefollow  ">
+  <span class="counter">
+  16
+  </span>
+  <div class="follow-btn noselectea" data-followid="1195305">
+  <span></span>
+  </div>
+  </div>
+  </div>
+  <!-- סמל להשבת החטופים -->
+  <div class="damamakabim" style="width: 30px;">
+  <img src="https://i.imagesup.co/images2/07bfbe6acc4e979900a3b39999732b52ca3e2efb.png" alt="למען אחינו ואחיותינו החטופים בעזה" style="width: 22px; position: absolute; right: 45px; z-index: 9;" title="למען אחינו ואחיותינו החטופים בעזה" data-ll-status="loading" class="loading">
+  </div>
+  <div class="contact">
+  <div class="posthead-date">		
+  <span class="date">היום 18:41</span>
+  <a name="" href="" class="postcounter">#3</a>				
+  </div>
+  <div class="username_container">
+  <div class="popupmenu memberaction" id="yui-gen12">
+  <a class="username offline popupctrl" href="member.php?u=1195305" title="avishaiUniverse מנותק" id="yui-gen14"><strong><span class="usermarkup blueuser">avishaiUniverse</span></strong></a>
+  <ul class="popupbody memberaction_body" id="yui-gen13">
+  <li class="left">
+  <img src="https://fxp.co.il/clear.gif" class="sp_show showth-profile" alt="" data-ll-status="observed">
+  <a href="member.php?u=1195305">
+  צפה בפרופיל
+  </a>
+  </li>
+  <li class="right">
+  <img src="https://fxp.co.il/clear.gif" class="sp_show showth-forum" alt="" data-ll-status="observed">
+  <a href="search.php?do=finduser&amp;userid=1195305&amp;contenttype=vBForum_Post&amp;showposts=1" rel="nofollow">
+  חפש הודעות 
+  </a>
+  </li>
+  <li class="left">
+  <img src="https://fxp.co.il/clear.gif" class="sp_show showth-message" alt="" data-ll-status="observed">
+  <a href="private.php?do=newpm&amp;u=1195305" rel="nofollow">
+  הודעה פרטית
+  </a>
+  </li>
+  </ul>
+  </div>
+  <img class="inlineimg onlinestatus loading" src="https://fxp.co.il/clear.gif" alt="avishaiUniverse מנותק" border="0" style="background-color: #A8A8A8;" title="avishaiUniverse מנותק" data-ll-status="loading">
+  <span class="usertitle">
+  <a href="/forumdisplay.php?f=18"><span class="tih mf">חבר בצוות תמיכה</span></a>
+  </span>
+  <div class="imlinks">
+  </div>
+  </div>
+  </div>
+  <div class="userinfo_extra">
+  <!-- New place for checkbox -->	
+  <!--End of New place for checkbox -->
+  <div style="float:right; padding:4px 10px; display:none">
+  </div>
+  <dl class="userstats-new" style="display:none">
+  <dt>תאריך הצטרפות</dt> <dd>07-10-16</dd>
+  <dt>שם פרטי</dt> <dd>אבישי</dd>
+  <dt>הודעות</dt> <dd>19,257</dd>	
+  </dl>
+  </div>
+  </div>
+  <div class="postbody" style="background-color: rgb(250, 250, 250);">
+  <div class="postrow">
+  <div class="content" style="">
+  <div id="post_message_224559732">
+  <blockquote class="postcontent restore">הודעת משתמש לדוגמה
+  
+  
+  
+  </blockquote>
+  </div>
+  </div>
+  <blockquote class="signature restore">
+  
+  </blockquote>
+  </div>
+  </div>
+  <div class="postfoot">
+  <div class="textcontrols floatcontainer">
+  <span class="postcontrols">
+  <img style="display:none" id="progress_224559732" src="https://static.fcdn.co.il/images_new/misc/progress.gif" alt="" data-ll-status="observed">
+  </span>
+  <div class="button-like-holder" style="margin-right: 5px;">
+  <span class="addlike noselectea _540c806b208b2c13f7f9fbf493cedf7c" id="224559732_addlike">אהבתי</span> 
+  <span id="wholikes_224559732" class="popupmenu">
+  <span style="cursor: pointer;" id="who_slike_224559732" onclick="showmorelike(this.id);" class="countlike" rel="nofollow">0</span>
+  <div id="wholikesname_224559732" style="min-width: 100px;" class="popupbody">
+  <span style="cursor: pointer;" id="224559732_morelikes" onclick="showmorelike(this.id);">
+  הצג עוד
+  </span>
+  </div>
+  </span>
+  </div>
+  </div>
+  </div>
+  <hr>
+  </li>
+  
+  </ol>
+  
+  
+  </div>
+</body>
+</html>
