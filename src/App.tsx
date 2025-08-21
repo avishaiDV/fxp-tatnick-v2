@@ -1262,10 +1262,13 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
-      <header className="header">
-        <h1>עורך תתי ניק FXP</h1>
-        <p>צור תת ניק מותאם אישית עם עורך ויזואלי</p>
-      </header>
+      <div className="app-header">
+        <h1>🎨 FXP Nickname Generator v2</h1>
+        <p>צור כינוי מותאם אישית לפורום FXP עם עיצוב ייחודי</p>
+        <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>
+          © 2025 Avishai - All rights reserved
+        </div>
+      </div>
 
       <div className="main-container">
         {/* Editor Panel */}

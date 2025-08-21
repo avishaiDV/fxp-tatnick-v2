@@ -1,5 +1,6 @@
 {
-  "name": "fxp-nickname-editor",
+  "name": "fxp-tatnick-v2",
+  "homepage": "https://avishaiDV.github.io/fxp-tatnick-v2",
   "version": "1.0.0",
   "description": "Visual editor for FXP forum nicknames with HTML export",
   "private": true,
