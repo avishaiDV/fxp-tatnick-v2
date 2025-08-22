@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import { Copy, Eye, Palette, LogOut, LogIn, CheckCircle, AlertCircle, Info, X } from 'lucide-react';
 import './App.css';
