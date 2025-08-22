@@ -308,6 +308,7 @@ const App: React.FC = () => {
     if (savedUsername) {
       loadUser(savedUsername);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getCookie = (name: string): string => {
