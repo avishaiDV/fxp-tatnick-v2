@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Copy, Eye, Palette, LogOut, LogIn, CheckCircle, AlertCircle, Info, X } from 'lucide-react';
 import './App.css';
 
-interface NicknameStyle {
+interface TatNickStyle {
   text: string;
   color: string;
   backgroundColor: string;
@@ -34,7 +34,7 @@ interface NicknameStyle {
   textParts: Array<{
     text: string;
     color: string;
-    styles?: Partial<NicknameStyle>;
+    styles?: Partial<TatNickStyle>;
   }>;
   // Border properties
   borderWidth: number;
@@ -159,7 +159,7 @@ const USER_RANKS = {
 };
 
 const App: React.FC = () => {
-        const [nickname, setNickname] = useState<NicknameStyle>({
+        const [tatNick, setTatNick] = useState<TatNickStyle>({
      text: 'משתמש רגיל',
      color: '#000000',
      backgroundColor: 'transparent',
@@ -432,91 +432,91 @@ const App: React.FC = () => {
      const styles: string[] = [];
      
      // Add styles that are not default values (even for special effects)
-     if (nickname.color !== '#000000') styles.push(`color: ${nickname.color}`);
-     if (nickname.fontSize !== 13) styles.push(`font-size: ${nickname.fontSize}px`);
-     if (nickname.fontWeight !== 400) styles.push(`font-weight: ${nickname.fontWeight}`);
-     if (nickname.fontStyle !== 'normal') styles.push(`font-style: ${nickname.fontStyle}`);
-     if (nickname.textDecoration !== 'none') styles.push(`text-decoration: ${nickname.textDecoration}`);
-     if (nickname.fontFamily !== 'inherit') styles.push(`font-family: ${nickname.fontFamily}, sans-serif`);
-     if (nickname.letterSpacing !== 0) styles.push(`letter-spacing: ${nickname.letterSpacing}px`);
-     if (nickname.lineHeight !== 1) styles.push(`line-height: ${nickname.lineHeight}`);
-     if (nickname.opacity !== 1) styles.push(`opacity: ${nickname.opacity}`);
-     if (nickname.textAlign !== 'right') styles.push(`text-align: ${nickname.textAlign}`);
+     if (tatNick.color !== '#000000') styles.push(`color: ${tatNick.color}`);
+     if (tatNick.fontSize !== 13) styles.push(`font-size: ${tatNick.fontSize}px`);
+     if (tatNick.fontWeight !== 400) styles.push(`font-weight: ${tatNick.fontWeight}`);
+     if (tatNick.fontStyle !== 'normal') styles.push(`font-style: ${tatNick.fontStyle}`);
+     if (tatNick.textDecoration !== 'none') styles.push(`text-decoration: ${tatNick.textDecoration}`);
+     if (tatNick.fontFamily !== 'inherit') styles.push(`font-family: ${tatNick.fontFamily}, sans-serif`);
+     if (tatNick.letterSpacing !== 0) styles.push(`letter-spacing: ${tatNick.letterSpacing}px`);
+     if (tatNick.lineHeight !== 1) styles.push(`line-height: ${tatNick.lineHeight}`);
+     if (tatNick.opacity !== 1) styles.push(`opacity: ${tatNick.opacity}`);
+     if (tatNick.textAlign !== 'right') styles.push(`text-align: ${tatNick.textAlign}`);
      
      // Word spacing
-     if (nickname.wordSpacing !== 0) styles.push(`word-spacing: ${nickname.wordSpacing}px`);
+     if (tatNick.wordSpacing !== 0) styles.push(`word-spacing: ${tatNick.wordSpacing}px`);
      
      // Text transform
-     if (nickname.transform && nickname.transform.includes('text-transform')) {
-       styles.push(nickname.transform);
+     if (tatNick.transform && tatNick.transform.includes('text-transform')) {
+       styles.push(tatNick.transform);
      }
      
      // Text indent
-     if (nickname.textIndent !== 0) styles.push(`text-indent: ${nickname.textIndent}px`);
+     if (tatNick.textIndent !== 0) styles.push(`text-indent: ${tatNick.textIndent}px`);
      
      // White space
-     if (nickname.whiteSpace !== 'normal') styles.push(`white-space: ${nickname.whiteSpace}`);
+     if (tatNick.whiteSpace !== 'normal') styles.push(`white-space: ${tatNick.whiteSpace}`);
      
      // Advanced text effects
      const filterEffects: string[] = [];
-     if (nickname.blur > 0) filterEffects.push(`blur(${nickname.blur}px)`);
-     if (nickname.brightness !== 100) filterEffects.push(`brightness(${nickname.brightness}%)`);
-     if (nickname.contrast !== 100) filterEffects.push(`contrast(${nickname.contrast}%)`);
-     if (nickname.saturate !== 100) filterEffects.push(`saturate(${nickname.saturate}%)`);
-     if (nickname.hueRotate !== 0) filterEffects.push(`hue-rotate(${nickname.hueRotate}deg)`);
-     if (nickname.invert !== 0) filterEffects.push(`invert(${nickname.invert}%)`);
-     if (nickname.sepia !== 0) filterEffects.push(`sepia(${nickname.sepia}%)`);
+     if (tatNick.blur > 0) filterEffects.push(`blur(${tatNick.blur}px)`);
+     if (tatNick.brightness !== 100) filterEffects.push(`brightness(${tatNick.brightness}%)`);
+     if (tatNick.contrast !== 100) filterEffects.push(`contrast(${tatNick.contrast}%)`);
+     if (tatNick.saturate !== 100) filterEffects.push(`saturate(${tatNick.saturate}%)`);
+     if (tatNick.hueRotate !== 0) filterEffects.push(`hue-rotate(${tatNick.hueRotate}deg)`);
+     if (tatNick.invert !== 0) filterEffects.push(`invert(${tatNick.invert}%)`);
+     if (tatNick.sepia !== 0) filterEffects.push(`sepia(${tatNick.sepia}%)`);
      
      if (filterEffects.length > 0) {
        styles.push(`filter: ${filterEffects.join(' ')}`);
      }
      
      // Background handling
-     if (nickname.hasBackground) {
-       if (nickname.gradient) {
-         const direction = nickname.gradientType === 'linear' ? `${nickname.gradientDirection}deg` : 'circle';
-         styles.push(`background: ${nickname.gradientType}-gradient(${direction}, ${nickname.gradientColors.join(', ')})`);
-       } else if (nickname.backgroundColor !== 'transparent') {
-         styles.push(`background: ${nickname.backgroundColor}`);
+     if (tatNick.hasBackground) {
+       if (tatNick.gradient) {
+         const direction = tatNick.gradientType === 'linear' ? `${tatNick.gradientDirection}deg` : 'circle';
+         styles.push(`background: ${tatNick.gradientType}-gradient(${direction}, ${tatNick.gradientColors.join(', ')})`);
+       } else if (tatNick.backgroundColor !== 'transparent') {
+         styles.push(`background: ${tatNick.backgroundColor}`);
        }
      }
 
      // Border handling
-     if (nickname.borderWidth > 0) {
-       styles.push(`border: ${nickname.borderWidth}px ${nickname.borderStyle} ${nickname.borderColor}`);
+     if (tatNick.borderWidth > 0) {
+       styles.push(`border: ${tatNick.borderWidth}px ${tatNick.borderStyle} ${tatNick.borderColor}`);
      }
 
      // Shadow and glow handling
      const shadowEffects: string[] = [];
      
      // Text shadow
-     if (nickname.shadowX !== 0 || nickname.shadowY !== 0 || nickname.shadowBlur !== 0) {
-       shadowEffects.push(`${nickname.shadowX}px ${nickname.shadowY}px ${nickname.shadowBlur}px ${nickname.shadowColor}`);
+     if (tatNick.shadowX !== 0 || tatNick.shadowY !== 0 || tatNick.shadowBlur !== 0) {
+       shadowEffects.push(`${tatNick.shadowX}px ${tatNick.shadowY}px ${tatNick.shadowBlur}px ${tatNick.shadowColor}`);
      }
      
      // Text glow (using text-shadow)
-     if (nickname.glow) {
-       shadowEffects.push(`0 0 10px ${nickname.glowColor}`);
-       shadowEffects.push(`0 0 20px ${nickname.glowColor}`);
-       shadowEffects.push(`0 0 30px ${nickname.glowColor}`);
+     if (tatNick.glow) {
+       shadowEffects.push(`0 0 10px ${tatNick.glowColor}`);
+       shadowEffects.push(`0 0 20px ${tatNick.glowColor}`);
+       shadowEffects.push(`0 0 30px ${tatNick.glowColor}`);
      }
      
      // Text stroke (outline effect using text-shadow)
-     if (nickname.textStroke && nickname.textStrokeWidth > 0) {
+     if (tatNick.textStroke && tatNick.textStrokeWidth > 0) {
        // Create multiple text-shadows for outline effect
-       for (let i = -nickname.textStrokeWidth; i <= nickname.textStrokeWidth; i++) {
-         for (let j = -nickname.textStrokeWidth; j <= nickname.textStrokeWidth; j++) {
+       for (let i = -tatNick.textStrokeWidth; i <= tatNick.textStrokeWidth; i++) {
+         for (let j = -tatNick.textStrokeWidth; j <= tatNick.textStrokeWidth; j++) {
            if (i !== 0 || j !== 0) {
-             shadowEffects.push(`${i}px ${j}px 0 ${nickname.textStrokeColor}`);
+             shadowEffects.push(`${i}px ${j}px 0 ${tatNick.textStrokeColor}`);
            }
          }
        }
      }
      
      // Double shadow effect
-     if (nickname.doubleShadow) {
-       shadowEffects.push(`${nickname.doubleShadowX}px ${nickname.doubleShadowY}px ${nickname.doubleShadowBlur}px ${nickname.doubleShadowColor}`);
-       shadowEffects.push(`${nickname.doubleShadowX * 2}px ${nickname.doubleShadowY * 2}px ${nickname.doubleShadowBlur * 1.5}px ${nickname.doubleShadowColor}`);
+     if (tatNick.doubleShadow) {
+       shadowEffects.push(`${tatNick.doubleShadowX}px ${tatNick.doubleShadowY}px ${tatNick.doubleShadowBlur}px ${tatNick.doubleShadowColor}`);
+       shadowEffects.push(`${tatNick.doubleShadowX * 2}px ${tatNick.doubleShadowY * 2}px ${tatNick.doubleShadowBlur * 1.5}px ${tatNick.doubleShadowColor}`);
      }
      
      if (shadowEffects.length > 0) {
@@ -524,14 +524,14 @@ const App: React.FC = () => {
      }
 
      // Box shadow for glow effect on background
-     if (nickname.glow && nickname.hasBackground) {
-       styles.push(`box-shadow: 0 0 15px ${nickname.glowColor}`);
+     if (tatNick.glow && tatNick.hasBackground) {
+       styles.push(`box-shadow: 0 0 15px ${tatNick.glowColor}`);
      }
      
      // Text gradient
-     if (nickname.textGradient) {
-       const gradientDirection = `${nickname.textGradientDirection}deg`;
-       styles.push(`background: linear-gradient(${gradientDirection}, ${nickname.textGradientColors.join(', ')})`);
+     if (tatNick.textGradient) {
+       const gradientDirection = `${tatNick.textGradientDirection}deg`;
+       styles.push(`background: linear-gradient(${gradientDirection}, ${tatNick.textGradientColors.join(', ')})`);
        styles.push(`-webkit-background-clip: text`);
        styles.push(`-webkit-text-fill-color: transparent`);
        styles.push(`background-clip: text`);
@@ -539,32 +539,32 @@ const App: React.FC = () => {
      
      // Text rotation and transform
      const transforms: string[] = [];
-     if (nickname.textRotation !== 0) transforms.push(`rotate(${nickname.textRotation}deg)`);
-     if (nickname.textSkewX !== 0) transforms.push(`skewX(${nickname.textSkewX}deg)`);
-     if (nickname.textSkewY !== 0) transforms.push(`skewY(${nickname.textSkewY}deg)`);
+     if (tatNick.textRotation !== 0) transforms.push(`rotate(${tatNick.textRotation}deg)`);
+     if (tatNick.textSkewX !== 0) transforms.push(`skewX(${tatNick.textSkewX}deg)`);
+     if (tatNick.textSkewY !== 0) transforms.push(`skewY(${tatNick.textSkewY}deg)`);
      
      if (transforms.length > 0) {
        styles.push(`transform: ${transforms.join(' ')}`);
      }
 
      // Add other styles only if they're not default
-     if (nickname.borderRadius !== 0) styles.push(`border-radius: ${nickname.borderRadius}px`);
-     if (nickname.padding !== 0) styles.push(`padding: ${nickname.padding}px`);
-     if (nickname.margin !== 0) styles.push(`margin: ${nickname.margin}px`);
+     if (tatNick.borderRadius !== 0) styles.push(`border-radius: ${tatNick.borderRadius}px`);
+     if (tatNick.padding !== 0) styles.push(`padding: ${tatNick.padding}px`);
+     if (tatNick.margin !== 0) styles.push(`margin: ${tatNick.margin}px`);
      
 
      // Handle special effects with additional styling
-     if (nickname.specialEffect === 'guystyle') {
+     if (tatNick.specialEffect === 'guystyle') {
        const classString = 'guystyle';
-       const content = nickname.multiColor ? generateMultiColorText() : (nickname.text || 'משתמש FXP');
+       const content = tatNick.multiColor ? generateMultiColorText() : (tatNick.text || 'משתמש FXP');
        const styleString = styles.join('; ');
        const styleAttr = styleString ? ` style="${styleString}"` : '';
        return `<span class="${classString}"${styleAttr}>${content}</span>`;
      }
      
-     if (nickname.specialEffect === 'abir') {
+     if (tatNick.specialEffect === 'abir') {
        const classString = 'abir';
-       const content = nickname.multiColor ? generateMultiColorText() : (nickname.text || 'משתמש FXP');
+       const content = tatNick.multiColor ? generateMultiColorText() : (tatNick.text || 'משתמש FXP');
        const styleString = styles.join('; ');
        const styleAttr = styleString ? ` style="${styleString}"` : '';
        return `<span class="${classString}"${styleAttr}>${content}</span>`;
@@ -591,7 +591,7 @@ const App: React.FC = () => {
      }
 
      const classString = classes.length > 0 ? classes.join(' ') : '';
-     const content = nickname.multiColor ? generateMultiColorText() : (nickname.text || 'משתמש FXP');
+     const content = tatNick.multiColor ? generateMultiColorText() : (tatNick.text || 'משתמש FXP');
      
      // If no styles and no classes, return simple span
      if (styles.length === 0 && !classString) {
@@ -606,14 +606,14 @@ const App: React.FC = () => {
    };
 
      const generateMultiColorText = (): string => {
-    return nickname.textParts.map(part => 
+    return tatNick.textParts.map(part => 
       `<font color="${part.color}">${part.text || 'משתמש FXP'}</font>`
     ).join('');
   };
 
      const addTextPart = () => {
     // Check if already have 2 colors (maximum allowed)
-    if (nickname.textParts.length >= 2) {
+    if (tatNick.textParts.length >= 2) {
       showToast('לא ניתן להוסיף יותר מ-2 צבעים. המקסימום הוא 2 צבעים בלבד.', 'error');
       return;
     }
@@ -627,22 +627,22 @@ const App: React.FC = () => {
       return;
     }
     
-    setNickname(prev => ({
+    setTatNick(prev => ({
       ...prev,
       textParts: [...prev.textParts, { text: 'טקסט חדש', color: '#000000' }]
     }));
   };
 
    const removeTextPart = (index: number) => {
-     setNickname(prev => ({
+     setTatNick(prev => ({
        ...prev,
        textParts: prev.textParts.filter((_, i) => i !== index)
      }));
    };
 
-     const updateTextPart = (index: number, updates: Partial<typeof nickname.textParts[0]>) => {
+     const updateTextPart = (index: number, updates: Partial<typeof tatNick.textParts[0]>) => {
     // Check if updating this part would exceed 250 characters
-    const currentParts = [...nickname.textParts];
+    const currentParts = [...tatNick.textParts];
     const updatedPart = { ...currentParts[index], ...updates };
     currentParts[index] = updatedPart;
     
@@ -656,7 +656,7 @@ const App: React.FC = () => {
       return;
     }
     
-    setNickname(prev => ({
+    setTatNick(prev => ({
       ...prev,
       textParts: prev.textParts.map((part, i) => 
         i === index ? { ...part, ...updates } : part
@@ -665,20 +665,20 @@ const App: React.FC = () => {
   };
 
      const toggleMultiColor = () => {
-    if (!nickname.multiColor) {
+    if (!tatNick.multiColor) {
       // Split text into two parts (maximum 2 colors)
-      const text = nickname.text || 'משתמש FXP';
+      const text = tatNick.text || 'משתמש FXP';
       const midPoint = Math.ceil(text.length / 2);
       
       // Check if this would exceed 250 characters
-      const testHTML = `<span style="color: ${nickname.color}">${text.substring(0, midPoint)}<font color="#ff0000">${text.substring(midPoint)}</font></span>`;
+      const testHTML = `<span style="color: ${tatNick.color}">${text.substring(0, midPoint)}<font color="#ff0000">${text.substring(midPoint)}</font></span>`;
       
       if (testHTML.length > 250) {
         showToast('הפעלת תת ניק עם 2 צבעים תחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
         return;
       }
       
-      setNickname(prev => ({
+      setTatNick(prev => ({
         ...prev,
         multiColor: true,
         textParts: [
@@ -688,8 +688,8 @@ const App: React.FC = () => {
       }));
     } else {
       // Merge all parts back to single text
-      const fullText = nickname.textParts.map(part => part.text).join('');
-      setNickname(prev => ({
+      const fullText = tatNick.textParts.map(part => part.text).join('');
+      setTatNick(prev => ({
         ...prev,
         multiColor: false,
         text: fullText,
@@ -795,7 +795,7 @@ const App: React.FC = () => {
       }
 
       // Parse all CSS properties
-      const newNickname: Partial<NicknameStyle> = {
+      const newNickname: Partial<TatNickStyle> = {
         text: multiColor ? (mainSpan.textContent || '') : (mainSpan.textContent || ''),
         color: style.color || '#000000',
         backgroundColor: style.backgroundColor || 'transparent',
@@ -841,7 +841,7 @@ const App: React.FC = () => {
         }
       }
 
-      setNickname(prev => ({ 
+      setTatNick(prev => ({ 
         ...prev, 
         ...newNickname,
         // Ensure new properties have default values
@@ -866,7 +866,7 @@ const App: React.FC = () => {
   };
 
         const resetToDefault = () => {
-     setNickname({
+     setTatNick({
        text: 'משתמש רגיל',
        color: '#000000',
        backgroundColor: 'transparent',
@@ -1256,8 +1256,8 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <div className="app-header">
-        <h1>🎨 FXP Nickname Generator v2</h1>
-        <p>צור כינוי מותאם אישית לפורום FXP עם עיצוב ייחודי</p>
+        <h1>🎨 מחולל תת ניק FXP v2</h1>
+        <p>צור תת ניק מותאם אישית לפורום FXP עם עיצוב ייחודי</p>
         <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>
           © 2025 Avishai - All rights reserved
         </div>
@@ -1354,18 +1354,18 @@ const App: React.FC = () => {
           <div className="input-group">
             <label>טקסט התת ניק:</label>
             <textarea
-              value={nickname.text || ''}
+              value={tatNick.text || ''}
               onChange={(e) => {
                 const newText = e.target.value;
                 
                 // Check if this would exceed 250 characters
-                if (nickname.multiColor) {
+                if (tatNick.multiColor) {
                   // For multi-color, check the full HTML
-                  const testParts = nickname.textParts.map(part => 
-                    part.text === nickname.text ? newText : part.text
+                  const testParts = tatNick.textParts.map(part => 
+                    part.text === tatNick.text ? newText : part.text
                   );
                   const testHTML = testParts.map(part => 
-                    `<font color="${nickname.color}">${part}</font>`
+                    `<font color="${tatNick.color}">${part}</font>`
                   ).join('');
                   
                   if (testHTML.length > 250) {
@@ -1374,14 +1374,14 @@ const App: React.FC = () => {
                   }
                 } else {
                   // For single color, check simple span
-                  const testHTML = `<span style="color: ${nickname.color}">${newText}</span>`;
+                  const testHTML = `<span style="color: ${tatNick.color}">${newText}</span>`;
                   if (testHTML.length > 250) {
                     showToast('הטקסט חורג מ-250 תווים. אנא קצר אותו.', 'error');
                     return;
                   }
                 }
                 
-                setNickname(prev => ({ ...prev, text: newText }));
+                setTatNick(prev => ({ ...prev, text: newText }));
               }}
               placeholder="הקלד את התת ניק שלך כאן... (ברירת מחדל: משתמש FXP)"
               className="text-input"
@@ -1426,8 +1426,8 @@ const App: React.FC = () => {
             <div className="control-row">
               <label>בחר פונט:</label>
               <select
-                value={nickname.fontFamily}
-                onChange={(e) => setNickname(prev => ({ ...prev, fontFamily: e.target.value }))}
+                value={tatNick.fontFamily}
+                onChange={(e) => setTatNick(prev => ({ ...prev, fontFamily: e.target.value }))}
               >
                 <option value="inherit">ברירת מחדל</option>
                 <option value="Arial, sans-serif">Arial</option>
@@ -1467,14 +1467,14 @@ const App: React.FC = () => {
               <label>צבע טקסט:</label>
               <input
                 type="color"
-                value={nickname.color}
+                value={tatNick.color}
                 onChange={(e) => {
                   const newColor = e.target.value;
                   
                   // Check if this would exceed 250 characters
-                  if (nickname.multiColor) {
-                    const testHTML = nickname.textParts.map(part => 
-                      `<font color="${part.text === nickname.text ? newColor : part.color}">${part.text}</font>`
+                  if (tatNick.multiColor) {
+                    const testHTML = tatNick.textParts.map(part => 
+                      `<font color="${part.text === tatNick.text ? newColor : part.color}">${part.text}</font>`
                     ).join('');
                     
                     if (testHTML.length > 250) {
@@ -1483,20 +1483,20 @@ const App: React.FC = () => {
                     }
                   }
                   
-                  setNickname(prev => ({ ...prev, color: newColor }));
+                  setTatNick(prev => ({ ...prev, color: newColor }));
                 }}
               />
               <input
                 type="text"
                 className="text-input-small"
-                value={nickname.color}
+                value={tatNick.color}
                 onChange={(e) => {
                   const newColor = e.target.value;
                   
                   // Check if this would exceed 250 characters
-                  if (nickname.multiColor) {
-                    const testHTML = nickname.textParts.map(part => 
-                      `<font color="${part.text === nickname.text ? newColor : part.color}">${part.text}</font>`
+                  if (tatNick.multiColor) {
+                    const testHTML = tatNick.textParts.map(part => 
+                      `<font color="${part.text === tatNick.text ? newColor : part.color}">${part.text}</font>`
                     );
                     
                     if (testHTML.length > 250) {
@@ -1505,7 +1505,7 @@ const App: React.FC = () => {
                     }
                   }
                   
-                  setNickname(prev => ({ ...prev, color: newColor }));
+                  setTatNick(prev => ({ ...prev, color: newColor }));
                 }}
                 placeholder="#000000"
               />
@@ -1516,18 +1516,18 @@ const App: React.FC = () => {
               <label>
                 <input
                   type="checkbox"
-                  checked={nickname.multiColor}
+                  checked={tatNick.multiColor}
                   onChange={toggleMultiColor}
                 />
                 תת ניק עם 2 צבעים
               </label>
             </div>
             
-            {nickname.multiColor && (
+            {tatNick.multiColor && (
               <div className="multi-color-controls">
                 <div className="control-row">
                   <label>חלקי טקסט (מקסימום 2):</label>
-                  {nickname.textParts.length < 2 && (
+                  {tatNick.textParts.length < 2 && (
                     <button 
                       type="button" 
                       className="add-part-btn"
@@ -1538,7 +1538,7 @@ const App: React.FC = () => {
                   )}
                 </div>
                 
-                {nickname.textParts.map((part, index) => (
+                {tatNick.textParts.map((part, index) => (
                   <div key={index} className="text-part">
                     <input
                       type="text"
@@ -1559,7 +1559,7 @@ const App: React.FC = () => {
                       onChange={(e) => updateTextPart(index, { color: e.target.value })}
                       placeholder="#000000"
                       />
-                    {nickname.textParts.length > 1 && (
+                    {tatNick.textParts.length > 1 && (
                       <button
                         type="button"
                         className="remove-part-btn"
@@ -1581,26 +1581,26 @@ const App: React.FC = () => {
             <label>
               <input
                 type="checkbox"
-                checked={nickname.hasBackground}
-                onChange={(e) => setNickname(prev => ({ ...prev, hasBackground: e.target.checked }))}
+                checked={tatNick.hasBackground}
+                onChange={(e) => setTatNick(prev => ({ ...prev, hasBackground: e.target.checked }))}
               />
               הפעל רקע
             </label>
           </div>
-          {nickname.hasBackground && (
+          {tatNick.hasBackground && (
             <>
               <div className="control-row">
                 <label>צבע רקע:</label>
                 <input
                   type="color"
-                  value={nickname.backgroundColor}
-                  onChange={(e) => setNickname(prev => ({ ...prev, backgroundColor: e.target.value }))}
+                  value={tatNick.backgroundColor}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, backgroundColor: e.target.value }))}
                 />
                 <input
                   type="text"
                   className="text-input-small"
-                  value={nickname.backgroundColor}
-                  onChange={(e) => setNickname(prev => ({ ...prev, backgroundColor: e.target.value }))}
+                  value={tatNick.backgroundColor}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, backgroundColor: e.target.value }))}
                   placeholder="#ffffff"
                 />
               </div>
@@ -1608,20 +1608,20 @@ const App: React.FC = () => {
                 <label>
                   <input
                     type="checkbox"
-                    checked={nickname.gradient}
-                    onChange={(e) => setNickname(prev => ({ ...prev, gradient: e.target.checked }))}
+                    checked={tatNick.gradient}
+                    onChange={(e) => setTatNick(prev => ({ ...prev, gradient: e.target.checked }))}
                   />
                   גרדיאנט
                 </label>
               </div>
-              {nickname.gradient && (
+              {tatNick.gradient && (
                 <div className="gradient-controls">
                   <div className="control-row">
                     <label>צבע 1:</label>
                     <input
                       type="color"
-                      value={nickname.gradientColors[0]}
-                      onChange={(e) => setNickname(prev => ({
+                      value={tatNick.gradientColors[0]}
+                      onChange={(e) => setTatNick(prev => ({
                         ...prev,
                         gradientColors: [e.target.value, prev.gradientColors[1]]
                       }))}
@@ -1629,8 +1629,8 @@ const App: React.FC = () => {
                     <input
                       type="text"
                       className="text-input-small"
-                      value={nickname.gradientColors[0]}
-                      onChange={(e) => setNickname(prev => ({
+                      value={tatNick.gradientColors[0]}
+                      onChange={(e) => setTatNick(prev => ({
                         ...prev,
                         gradientColors: [e.target.value, prev.gradientColors[1]]
                       }))}
@@ -1641,8 +1641,8 @@ const App: React.FC = () => {
                     <label>צבע 2:</label>
                     <input
                       type="color"
-                      value={nickname.gradientColors[1]}
-                      onChange={(e) => setNickname(prev => ({
+                      value={tatNick.gradientColors[1]}
+                      onChange={(e) => setTatNick(prev => ({
                         ...prev,
                         gradientColors: [prev.gradientColors[0], e.target.value]
                       }))}
@@ -1650,8 +1650,8 @@ const App: React.FC = () => {
                     <input
                       type="text"
                       className="text-input-small"
-                      value={nickname.gradientColors[1]}
-                      onChange={(e) => setNickname(prev => ({
+                      value={tatNick.gradientColors[1]}
+                      onChange={(e) => setTatNick(prev => ({
                         ...prev,
                         gradientColors: [prev.gradientColors[0], e.target.value]
                       }))}
@@ -1664,18 +1664,18 @@ const App: React.FC = () => {
                       type="range"
                       min="0"
                       max="360"
-                      value={nickname.gradientDirection}
-                      onChange={(e) => setNickname(prev => ({ ...prev, gradientDirection: parseInt(e.target.value) }))}
+                      value={tatNick.gradientDirection}
+                      onChange={(e) => setTatNick(prev => ({ ...prev, gradientDirection: parseInt(e.target.value) }))}
                     />
                     <input
                       type="number"
                       className="number-input"
-                      value={nickname.gradientDirection}
-                      onChange={(e) => setNickname(prev => ({ ...prev, gradientDirection: parseInt(e.target.value) || 0 }))}
+                      value={tatNick.gradientDirection}
+                      onChange={(e) => setTatNick(prev => ({ ...prev, gradientDirection: parseInt(e.target.value) || 0 }))}
                       min="0"
                       max="360"
                     />
-                    <span>{nickname.gradientDirection}°</span>
+                    <span>{tatNick.gradientDirection}°</span>
                   </div>
                 </div>
               )}
@@ -1687,8 +1687,8 @@ const App: React.FC = () => {
             <label>
               <input
                 type="checkbox"
-                checked={nickname.borderWidth > 0}
-                onChange={(e) => setNickname(prev => ({ 
+                checked={tatNick.borderWidth > 0}
+                onChange={(e) => setTatNick(prev => ({ 
                   ...prev, 
                   borderWidth: e.target.checked ? 2 : 0 
                 }))}
@@ -1696,7 +1696,7 @@ const App: React.FC = () => {
               מסגרת
             </label>
           </div>
-          {nickname.borderWidth > 0 && (
+          {tatNick.borderWidth > 0 && (
             <>
               <div className="control-row">
                 <label>עובי מסגרת:</label>
@@ -1704,14 +1704,14 @@ const App: React.FC = () => {
                   type="range"
                   min="1"
                   max="10"
-                  value={nickname.borderWidth}
-                  onChange={(e) => setNickname(prev => ({ ...prev, borderWidth: parseInt(e.target.value) }))}
+                  value={tatNick.borderWidth}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, borderWidth: parseInt(e.target.value) }))}
                 />
                 <input
                   type="number"
                   className="number-input"
-                  value={nickname.borderWidth}
-                  onChange={(e) => setNickname(prev => ({ ...prev, borderWidth: parseInt(e.target.value) || 0 }))}
+                  value={tatNick.borderWidth}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, borderWidth: parseInt(e.target.value) || 0 }))}
                   min="1"
                   max="10"
                 />
@@ -1720,8 +1720,8 @@ const App: React.FC = () => {
               <div className="control-row">
                 <label>סגנון מסגרת:</label>
                 <select
-                  value={nickname.borderStyle}
-                  onChange={(e) => setNickname(prev => ({ ...prev, borderStyle: e.target.value as any }))}
+                  value={tatNick.borderStyle}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, borderStyle: e.target.value as any }))}
                 >
                   <option value="solid">רציף</option>
                   <option value="dashed">מקווקו</option>
@@ -1733,15 +1733,15 @@ const App: React.FC = () => {
                 <label>צבע מסגרת:</label>
                 <input
                   type="color"
-                  value={nickname.borderColor}
-                  onChange={(e) => setNickname(prev => ({ ...prev, borderColor: e.target.value }))}
+                  value={tatNick.borderColor}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, borderColor: e.target.value }))}
                 />
               </div>
             </>
           )}
 
           {/* Spacing - Only show when background or border is active */}
-          {(nickname.hasBackground || nickname.borderWidth > 0) && (
+          {(tatNick.hasBackground || tatNick.borderWidth > 0) && (
             <>
               <div className="control-row">
                 <label>ריפוד:</label>
@@ -1749,14 +1749,14 @@ const App: React.FC = () => {
                   type="range"
                   min="0"
                   max="20"
-                  value={nickname.padding}
-                  onChange={(e) => setNickname(prev => ({ ...prev, padding: parseInt(e.target.value) }))}
+                  value={tatNick.padding}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, padding: parseInt(e.target.value) }))}
                 />
                 <input
                   type="number"
                   className="number-input"
-                  value={nickname.padding}
-                  onChange={(e) => setNickname(prev => ({ ...prev, padding: parseInt(e.target.value) || 0 }))}
+                  value={tatNick.padding}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, padding: parseInt(e.target.value) || 0 }))}
                   min="0"
                   max="20"
                 />
@@ -1768,14 +1768,14 @@ const App: React.FC = () => {
                   type="range"
                   min="0"
                   max="10"
-                  value={nickname.margin}
-                  onChange={(e) => setNickname(prev => ({ ...prev, margin: parseInt(e.target.value) }))}
+                  value={tatNick.margin}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, margin: parseInt(e.target.value) }))}
                 />
                 <input
                   type="number"
                   className="number-input"
-                  value={nickname.margin}
-                  onChange={(e) => setNickname(prev => ({ ...prev, margin: parseInt(e.target.value) || 0 }))}
+                  value={tatNick.margin}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, margin: parseInt(e.target.value) || 0 }))}
                 />
                 <span>px</span>
               </div>
@@ -1785,14 +1785,14 @@ const App: React.FC = () => {
                   type="range"
                   min="0"
                   max="20"
-                  value={nickname.borderRadius}
-                  onChange={(e) => setNickname(prev => ({ ...prev, borderRadius: parseInt(e.target.value) }))}
+                  value={tatNick.borderRadius}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, borderRadius: parseInt(e.target.value) }))}
                 />
                 <input
                   type="number"
                   className="number-input"
-                  value={nickname.borderRadius}
-                  onChange={(e) => setNickname(prev => ({ ...prev, borderRadius: parseInt(e.target.value) || 0 }))}
+                  value={tatNick.borderRadius}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, borderRadius: parseInt(e.target.value) || 0 }))}
                   min="0"
                   max="20"
                 />
@@ -1806,8 +1806,8 @@ const App: React.FC = () => {
             <label>
               <input
                 type="checkbox"
-                checked={nickname.shadowX !== 0 || nickname.shadowY !== 0 || nickname.shadowBlur !== 0}
-                onChange={(e) => setNickname(prev => ({ 
+                checked={tatNick.shadowX !== 0 || tatNick.shadowY !== 0 || tatNick.shadowBlur !== 0}
+                onChange={(e) => setTatNick(prev => ({ 
                   ...prev, 
                   shadowX: e.target.checked ? 2 : 0,
                   shadowY: e.target.checked ? 2 : 0,
@@ -1817,7 +1817,7 @@ const App: React.FC = () => {
               צל טקסט
             </label>
           </div>
-          {(nickname.shadowX !== 0 || nickname.shadowY !== 0 || nickname.shadowBlur !== 0) && (
+          {(tatNick.shadowX !== 0 || tatNick.shadowY !== 0 || tatNick.shadowBlur !== 0) && (
             <>
               <div className="control-row">
                 <label>מיקום X:</label>
@@ -1825,14 +1825,14 @@ const App: React.FC = () => {
                   type="range"
                   min="-10"
                   max="10"
-                  value={nickname.shadowX}
-                  onChange={(e) => setNickname(prev => ({ ...prev, shadowX: parseInt(e.target.value) }))}
+                  value={tatNick.shadowX}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, shadowX: parseInt(e.target.value) }))}
                 />
                 <input
                   type="number"
                   className="number-input"
-                  value={nickname.shadowX}
-                  onChange={(e) => setNickname(prev => ({ ...prev, shadowX: parseInt(e.target.value) || 0 }))}
+                  value={tatNick.shadowX}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, shadowX: parseInt(e.target.value) || 0 }))}
                   min="-10"
                   max="10"
                 />
@@ -1844,14 +1844,14 @@ const App: React.FC = () => {
                   type="range"
                   min="-10"
                   max="10"
-                  value={nickname.shadowY}
-                  onChange={(e) => setNickname(prev => ({ ...prev, shadowY: parseInt(e.target.value) }))}
+                  value={tatNick.shadowY}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, shadowY: parseInt(e.target.value) }))}
                 />
                 <input
                   type="number"
                   className="number-input"
-                  value={nickname.shadowY}
-                  onChange={(e) => setNickname(prev => ({ ...prev, shadowY: parseInt(e.target.value) || 0 }))}
+                  value={tatNick.shadowY}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, shadowY: parseInt(e.target.value) || 0 }))}
                 />
                 <span>px</span>
               </div>
@@ -1861,14 +1861,14 @@ const App: React.FC = () => {
                   type="range"
                   min="0"
                   max="20"
-                  value={nickname.shadowBlur}
-                  onChange={(e) => setNickname(prev => ({ ...prev, shadowBlur: parseInt(e.target.value) }))}
+                  value={tatNick.shadowBlur}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, shadowBlur: parseInt(e.target.value) }))}
                 />
                 <input
                   type="number"
                   className="number-input"
-                  value={nickname.shadowBlur}
-                  onChange={(e) => setNickname(prev => ({ ...prev, shadowBlur: parseInt(e.target.value) || 0 }))}
+                  value={tatNick.shadowBlur}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, shadowBlur: parseInt(e.target.value) || 0 }))}
                   min="0"
                   max="20"
                 />
@@ -1878,8 +1878,8 @@ const App: React.FC = () => {
                 <label>צבע צל:</label>
                 <input
                   type="color"
-                  value={nickname.shadowColor}
-                  onChange={(e) => setNickname(prev => ({ ...prev, shadowColor: e.target.value }))}
+                  value={tatNick.shadowColor}
+                  onChange={(e) => setTatNick(prev => ({ ...prev, shadowColor: e.target.value }))}
                 />
               </div>
             </>
@@ -1896,14 +1896,14 @@ const App: React.FC = () => {
                 type="range"
                 min="5"
                 max="20"
-                value={nickname.fontSize}
-                onChange={(e) => setNickname(prev => ({ ...prev, fontSize: parseInt(e.target.value) }))}
+                value={tatNick.fontSize}
+                onChange={(e) => setTatNick(prev => ({ ...prev, fontSize: parseInt(e.target.value) }))}
               />
               <input
                 type="number"
                 className="number-input"
-                value={nickname.fontSize}
-                onChange={(e) => setNickname(prev => ({ ...prev, fontSize: parseInt(e.target.value) || 13 }))}
+                value={tatNick.fontSize}
+                onChange={(e) => setTatNick(prev => ({ ...prev, fontSize: parseInt(e.target.value) || 13 }))}
                 min="5"
                 max="20"
               />
@@ -1912,8 +1912,8 @@ const App: React.FC = () => {
             <div className="control-row">
               <label>עובי גופן:</label>
               <select
-                value={nickname.fontWeight}
-                onChange={(e) => setNickname(prev => ({ ...prev, fontWeight: parseInt(e.target.value) }))}
+                value={tatNick.fontWeight}
+                onChange={(e) => setTatNick(prev => ({ ...prev, fontWeight: parseInt(e.target.value) }))}
               >
                 <option value={300}>דק</option>
                 <option value={400}>רגיל</option>
@@ -1926,8 +1926,8 @@ const App: React.FC = () => {
               <label>
                 <input
                   type="checkbox"
-                  checked={nickname.fontStyle === 'italic'}
-                  onChange={(e) => setNickname(prev => ({ 
+                  checked={tatNick.fontStyle === 'italic'}
+                  onChange={(e) => setTatNick(prev => ({ 
                     ...prev, 
                     fontStyle: e.target.checked ? 'italic' : 'normal' 
                   }))}
@@ -1938,8 +1938,8 @@ const App: React.FC = () => {
             <div className="control-row">
               <label>קו תחתון:</label>
               <select
-                value={nickname.textDecoration}
-                onChange={(e) => setNickname(prev => ({ 
+                value={tatNick.textDecoration}
+                onChange={(e) => setTatNick(prev => ({ 
                   ...prev, 
                   textDecoration: e.target.value as any 
                 }))}
@@ -1963,7 +1963,7 @@ const App: React.FC = () => {
                 min="0"
                 max="5"
                 step="0.1"
-                value={nickname.blur}
+                value={tatNick.blur}
                 onChange={(e) => {
                   const newBlur = parseFloat(e.target.value);
                   const testHTML = generateHTML().replace(/blur\(\d+\.?\d*px\)/, newBlur > 0 ? `blur(${newBlur}px)` : '');
@@ -1971,13 +1971,13 @@ const App: React.FC = () => {
                     showToast('הוספת טשטוש תחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, blur: newBlur }));
+                  setTatNick(prev => ({ ...prev, blur: newBlur }));
                 }}
               />
               <input
                 type="number"
                 className="number-input"
-                value={nickname.blur}
+                value={tatNick.blur}
                 onChange={(e) => {
                   const newBlur = parseFloat(e.target.value) || 0;
                   const testHTML = generateHTML().replace(/blur\(\d+\.?\d*px\)/, newBlur > 0 ? `blur(${newBlur}px)` : '');
@@ -1985,7 +1985,7 @@ const App: React.FC = () => {
                     showToast('הוספת טשטוש תחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, blur: newBlur }));
+                  setTatNick(prev => ({ ...prev, blur: newBlur }));
                 }}
                 min="0"
                 max="5"
@@ -1999,7 +1999,7 @@ const App: React.FC = () => {
               <label>
                 <input
                   type="checkbox"
-                  checked={nickname.glow}
+                  checked={tatNick.glow}
                   onChange={(e) => {
                     const newGlow = e.target.checked;
                     // Create a test HTML with glow effect
@@ -2008,40 +2008,40 @@ const App: React.FC = () => {
                       showToast('הוספת זוהר תחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                       return;
                     }
-                    setNickname(prev => ({ ...prev, glow: newGlow }));
+                    setTatNick(prev => ({ ...prev, glow: newGlow }));
                   }}
                 />
                 זוהר טקסט
               </label>
             </div>
-            {nickname.glow && (
+            {tatNick.glow && (
               <div className="control-row">
                 <label>צבע זוהר:</label>
                 <input
                   type="color"
-                  value={nickname.glowColor}
+                  value={tatNick.glowColor}
                   onChange={(e) => {
                     const newColor = e.target.value;
-                    const testHTML = generateHTML().replace(new RegExp(nickname.glowColor, 'g'), newColor);
+                    const testHTML = generateHTML().replace(new RegExp(tatNick.glowColor, 'g'), newColor);
                     if (testHTML.length > 250) {
                       showToast('שינוי צבע הזוהר יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                       return;
                     }
-                    setNickname(prev => ({ ...prev, glowColor: newColor }));
+                    setTatNick(prev => ({ ...prev, glowColor: newColor }));
                   }}
                 />
                 <input
                   type="text"
                   className="text-input-small"
-                  value={nickname.glowColor}
+                  value={tatNick.glowColor}
                   onChange={(e) => {
                     const newColor = e.target.value;
-                    const testHTML = generateHTML().replace(new RegExp(nickname.glowColor, 'g'), newColor);
+                    const testHTML = generateHTML().replace(new RegExp(tatNick.glowColor, 'g'), newColor);
                     if (testHTML.length > 250) {
                       showToast('שינוי צבע הזוהר יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                       return;
                     }
-                    setNickname(prev => ({ ...prev, glowColor: newColor }));
+                    setTatNick(prev => ({ ...prev, glowColor: newColor }));
                   }}
                   placeholder="#ff6b6b"
                 />
@@ -2056,7 +2056,7 @@ const App: React.FC = () => {
                 min="0"
                 max="1"
                 step="0.1"
-                value={nickname.opacity}
+                value={tatNick.opacity}
                 onChange={(e) => {
                   const newOpacity = parseFloat(e.target.value);
                   const testHTML = generateHTML().replace(/opacity:\s*[\d.]+/, `opacity: ${newOpacity}`);
@@ -2064,13 +2064,13 @@ const App: React.FC = () => {
                     showToast('שינוי השקיפות יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, opacity: newOpacity }));
+                  setTatNick(prev => ({ ...prev, opacity: newOpacity }));
                 }}
               />
               <input
                 type="number"
                 className="number-input"
-                value={nickname.opacity}
+                value={tatNick.opacity}
                 onChange={(e) => {
                   const newOpacity = parseFloat(e.target.value) || 0;
                   const testHTML = generateHTML().replace(/opacity:\s*[\d.]+/, `opacity: ${newOpacity}`);
@@ -2078,13 +2078,13 @@ const App: React.FC = () => {
                     showToast('שינוי השקיפות יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, opacity: newOpacity }));
+                  setTatNick(prev => ({ ...prev, opacity: newOpacity }));
                 }}
                 min="0"
                 max="1"
                 step="0.1"
               />
-              <span>{Math.round(nickname.opacity * 100)}%</span>
+              <span>{Math.round(tatNick.opacity * 100)}%</span>
             </div>
 
             {/* Letter Spacing */}
@@ -2095,7 +2095,7 @@ const App: React.FC = () => {
                 min="-2"
                 max="10"
                 step="0.1"
-                value={nickname.letterSpacing}
+                value={tatNick.letterSpacing}
                 onChange={(e) => {
                   const newSpacing = parseFloat(e.target.value);
                   const testHTML = generateHTML().replace(/letter-spacing:\s*-?[\d.]+px/, `letter-spacing: ${newSpacing}px`);
@@ -2103,13 +2103,13 @@ const App: React.FC = () => {
                     showToast('שינוי מרווח האותיות יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, letterSpacing: newSpacing }));
+                  setTatNick(prev => ({ ...prev, letterSpacing: newSpacing }));
                 }}
               />
               <input
                 type="number"
                 className="number-input"
-                value={nickname.letterSpacing}
+                value={tatNick.letterSpacing}
                 onChange={(e) => {
                   const newSpacing = parseFloat(e.target.value) || 0;
                   const testHTML = generateHTML().replace(/letter-spacing:\s*-?[\d.]+px/, `letter-spacing: ${newSpacing}px`);
@@ -2117,7 +2117,7 @@ const App: React.FC = () => {
                     showToast('שינוי מרווח האותיות יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, letterSpacing: newSpacing }));
+                  setTatNick(prev => ({ ...prev, letterSpacing: newSpacing }));
                 }}
                 min="-2"
                 max="10"
@@ -2133,7 +2133,7 @@ const App: React.FC = () => {
                 type="range"
                 min="-5"
                 max="20"
-                value={nickname.wordSpacing}
+                value={tatNick.wordSpacing}
                 onChange={(e) => {
                   const newSpacing = parseInt(e.target.value);
                   const testHTML = generateHTML().replace(/word-spacing:\s*-?\d+px/, `word-spacing: ${newSpacing}px`);
@@ -2141,13 +2141,13 @@ const App: React.FC = () => {
                     showToast('שינוי מרווח המילים יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, wordSpacing: newSpacing }));
+                  setTatNick(prev => ({ ...prev, wordSpacing: newSpacing }));
                 }}
               />
               <input
                 type="number"
                 className="number-input"
-                value={nickname.wordSpacing}
+                value={tatNick.wordSpacing}
                 onChange={(e) => {
                   const newSpacing = parseInt(e.target.value) || 0;
                   const testHTML = generateHTML().replace(/word-spacing:\s*-?\d+px/, `word-spacing: ${newSpacing}px`);
@@ -2155,7 +2155,7 @@ const App: React.FC = () => {
                     showToast('שינוי מרווח המילים יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, wordSpacing: newSpacing }));
+                  setTatNick(prev => ({ ...prev, wordSpacing: newSpacing }));
                 }}
                 min="-5"
                 max="20"
@@ -2167,7 +2167,7 @@ const App: React.FC = () => {
             <div className="control-row">
               <label>סגנון אותיות:</label>
               <select
-                value={nickname.transform}
+                value={tatNick.transform}
                 onChange={(e) => {
                   const newTransform = e.target.value;
                   const testHTML = generateHTML().replace(/text-transform:\s*\w+/, newTransform || '');
@@ -2175,7 +2175,7 @@ const App: React.FC = () => {
                     showToast('שינוי סגנון האותיות יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, transform: newTransform }));
+                  setTatNick(prev => ({ ...prev, transform: newTransform }));
                 }}
               >
                 <option value="">רגיל</option>
@@ -2195,7 +2195,7 @@ const App: React.FC = () => {
               <label>
                 <input
                   type="checkbox"
-                  checked={nickname.textGradient}
+                  checked={tatNick.textGradient}
                   onChange={(e) => {
                     const newGradient = e.target.checked;
                     const testHTML = generateHTML();
@@ -2203,23 +2203,23 @@ const App: React.FC = () => {
                       showToast('הוספת גרדיאנט תחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                       return;
                     }
-                    setNickname(prev => ({ ...prev, textGradient: newGradient }));
+                    setTatNick(prev => ({ ...prev, textGradient: newGradient }));
                   }}
                 />
                 גרדיאנט טקסט
               </label>
             </div>
-            {nickname.textGradient && (
+            {tatNick.textGradient && (
               <>
                 <div className="control-row">
                   <label>צבע ראשון:</label>
                   <input
                     type="color"
-                    value={nickname.textGradientColors[0]}
+                    value={tatNick.textGradientColors[0]}
                     onChange={(e) => {
-                      const newColors = [...nickname.textGradientColors];
+                      const newColors = [...tatNick.textGradientColors];
                       newColors[0] = e.target.value;
-                      setNickname(prev => ({ ...prev, textGradientColors: newColors }));
+                      setTatNick(prev => ({ ...prev, textGradientColors: newColors }));
                     }}
                   />
                 </div>
@@ -2227,11 +2227,11 @@ const App: React.FC = () => {
                   <label>צבע שני:</label>
                   <input
                     type="color"
-                    value={nickname.textGradientColors[1]}
+                    value={tatNick.textGradientColors[1]}
                     onChange={(e) => {
-                      const newColors = [...nickname.textGradientColors];
+                      const newColors = [...tatNick.textGradientColors];
                       newColors[1] = e.target.value;
-                      setNickname(prev => ({ ...prev, textGradientColors: newColors }));
+                      setTatNick(prev => ({ ...prev, textGradientColors: newColors }));
                     }}
                   />
                 </div>
@@ -2241,10 +2241,10 @@ const App: React.FC = () => {
                     type="range"
                     min="0"
                     max="360"
-                    value={nickname.textGradientDirection}
-                    onChange={(e) => setNickname(prev => ({ ...prev, textGradientDirection: parseInt(e.target.value) }))}
+                    value={tatNick.textGradientDirection}
+                    onChange={(e) => setTatNick(prev => ({ ...prev, textGradientDirection: parseInt(e.target.value) }))}
                   />
-                  <span>{nickname.textGradientDirection}°</span>
+                  <span>{tatNick.textGradientDirection}°</span>
                 </div>
               </>
             )}
@@ -2256,7 +2256,7 @@ const App: React.FC = () => {
                 type="range"
                 min="-45"
                 max="45"
-                value={nickname.textRotation}
+                value={tatNick.textRotation}
                 onChange={(e) => {
                   const newRotation = parseInt(e.target.value);
                   const testHTML = generateHTML();
@@ -2264,10 +2264,10 @@ const App: React.FC = () => {
                     showToast('שינוי הסיבוב יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, textRotation: newRotation }));
+                  setTatNick(prev => ({ ...prev, textRotation: newRotation }));
                 }}
               />
-              <span>{nickname.textRotation}°</span>
+              <span>{tatNick.textRotation}°</span>
             </div>
 
             {/* Text Skew */}
@@ -2277,7 +2277,7 @@ const App: React.FC = () => {
                 type="range"
                 min="-30"
                 max="30"
-                value={nickname.textSkewX}
+                value={tatNick.textSkewX}
                 onChange={(e) => {
                   const newSkew = parseInt(e.target.value);
                   const testHTML = generateHTML();
@@ -2285,10 +2285,10 @@ const App: React.FC = () => {
                     showToast('שינוי ההטיה יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, textSkewX: newSkew }));
+                  setTatNick(prev => ({ ...prev, textSkewX: newSkew }));
                 }}
               />
-              <span>{nickname.textSkewX}°</span>
+              <span>{tatNick.textSkewX}°</span>
             </div>
 
             <div className="control-row">
@@ -2297,7 +2297,7 @@ const App: React.FC = () => {
                 type="range"
                 min="-30"
                 max="30"
-                value={nickname.textSkewY}
+                value={tatNick.textSkewY}
                 onChange={(e) => {
                   const newSkew = parseInt(e.target.value);
                   const testHTML = generateHTML();
@@ -2305,10 +2305,10 @@ const App: React.FC = () => {
                     showToast('שינוי ההטיה יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, textSkewY: newSkew }));
+                  setTatNick(prev => ({ ...prev, textSkewY: newSkew }));
                 }}
               />
-              <span>{nickname.textSkewY}°</span>
+              <span>{tatNick.textSkewY}°</span>
             </div>
 
             {/* Double Shadow */}
@@ -2316,7 +2316,7 @@ const App: React.FC = () => {
               <label>
                 <input
                   type="checkbox"
-                  checked={nickname.doubleShadow}
+                  checked={tatNick.doubleShadow}
                   onChange={(e) => {
                     const newDoubleShadow = e.target.checked;
                     const testHTML = generateHTML();
@@ -2324,20 +2324,20 @@ const App: React.FC = () => {
                       showToast('הוספת צל כפול תחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                       return;
                     }
-                    setNickname(prev => ({ ...prev, doubleShadow: newDoubleShadow }));
+                    setTatNick(prev => ({ ...prev, doubleShadow: newDoubleShadow }));
                   }}
                 />
                 צל כפול
               </label>
             </div>
-            {nickname.doubleShadow && (
+            {tatNick.doubleShadow && (
               <>
                 <div className="control-row">
                   <label>צבע צל:</label>
                   <input
                     type="color"
-                    value={nickname.doubleShadowColor}
-                    onChange={(e) => setNickname(prev => ({ ...prev, doubleShadowColor: e.target.value }))}
+                    value={tatNick.doubleShadowColor}
+                    onChange={(e) => setTatNick(prev => ({ ...prev, doubleShadowColor: e.target.value }))}
                   />
                 </div>
                 <div className="control-row">
@@ -2346,10 +2346,10 @@ const App: React.FC = () => {
                     type="range"
                     min="-10"
                     max="10"
-                    value={nickname.doubleShadowX}
-                    onChange={(e) => setNickname(prev => ({ ...prev, doubleShadowX: parseInt(e.target.value) }))}
+                    value={tatNick.doubleShadowX}
+                    onChange={(e) => setTatNick(prev => ({ ...prev, doubleShadowX: parseInt(e.target.value) }))}
                   />
-                  <span>{nickname.doubleShadowX}px</span>
+                  <span>{tatNick.doubleShadowX}px</span>
                 </div>
                 <div className="control-row">
                   <label>היסט Y:</label>
@@ -2357,10 +2357,10 @@ const App: React.FC = () => {
                     type="range"
                     min="-10"
                     max="10"
-                    value={nickname.doubleShadowY}
-                    onChange={(e) => setNickname(prev => ({ ...prev, doubleShadowY: parseInt(e.target.value) }))}
+                    value={tatNick.doubleShadowY}
+                    onChange={(e) => setTatNick(prev => ({ ...prev, doubleShadowY: parseInt(e.target.value) }))}
                   />
-                  <span>{nickname.doubleShadowY}px</span>
+                  <span>{tatNick.doubleShadowY}px</span>
                 </div>
                 <div className="control-row">
                   <label>טשטוש:</label>
@@ -2368,10 +2368,10 @@ const App: React.FC = () => {
                     type="range"
                     min="0"
                     max="20"
-                    value={nickname.doubleShadowBlur}
-                    onChange={(e) => setNickname(prev => ({ ...prev, doubleShadowBlur: parseInt(e.target.value) }))}
+                    value={tatNick.doubleShadowBlur}
+                    onChange={(e) => setTatNick(prev => ({ ...prev, doubleShadowBlur: parseInt(e.target.value) }))}
                   />
-                  <span>{nickname.doubleShadowBlur}px</span>
+                  <span>{tatNick.doubleShadowBlur}px</span>
                 </div>
               </>
             )}
@@ -2386,7 +2386,7 @@ const App: React.FC = () => {
               <label>
                 <input
                   type="checkbox"
-                  checked={nickname.textStroke}
+                  checked={tatNick.textStroke}
                   onChange={(e) => {
                     const newStroke = e.target.checked;
                     const testHTML = generateHTML(); // Test with current settings
@@ -2394,13 +2394,13 @@ const App: React.FC = () => {
                       showToast('הוספת קו חיצוני תחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                       return;
                     }
-                    setNickname(prev => ({ ...prev, textStroke: newStroke }));
+                    setTatNick(prev => ({ ...prev, textStroke: newStroke }));
                   }}
                 />
                 קו חיצוני לטקסט
               </label>
             </div>
-            {nickname.textStroke && (
+            {tatNick.textStroke && (
               <>
                 <div className="control-row">
                   <label>עובי קו:</label>
@@ -2409,7 +2409,7 @@ const App: React.FC = () => {
                     min="0.5"
                     max="3"
                     step="0.5"
-                    value={nickname.textStrokeWidth}
+                    value={tatNick.textStrokeWidth}
                     onChange={(e) => {
                       const newWidth = parseFloat(e.target.value);
                       const testHTML = generateHTML(); // Test with current settings
@@ -2417,13 +2417,13 @@ const App: React.FC = () => {
                         showToast('שינוי עובי הקו יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                         return;
                       }
-                      setNickname(prev => ({ ...prev, textStrokeWidth: newWidth }));
+                      setTatNick(prev => ({ ...prev, textStrokeWidth: newWidth }));
                     }}
                   />
                   <input
                     type="number"
                     className="number-input"
-                    value={nickname.textStrokeWidth}
+                    value={tatNick.textStrokeWidth}
                     onChange={(e) => {
                       const newWidth = parseFloat(e.target.value) || 1;
                       const testHTML = generateHTML(); // Test with current settings
@@ -2431,7 +2431,7 @@ const App: React.FC = () => {
                         showToast('שינוי עובי הקו יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                         return;
                       }
-                      setNickname(prev => ({ ...prev, textStrokeWidth: newWidth }));
+                      setTatNick(prev => ({ ...prev, textStrokeWidth: newWidth }));
                     }}
                     min="0.5"
                     max="3"
@@ -2443,29 +2443,29 @@ const App: React.FC = () => {
                   <label>צבע קו:</label>
                   <input
                     type="color"
-                    value={nickname.textStrokeColor}
+                    value={tatNick.textStrokeColor}
                     onChange={(e) => {
                       const newColor = e.target.value;
-                      const testHTML = generateHTML().replace(new RegExp(nickname.textStrokeColor, 'g'), newColor);
+                      const testHTML = generateHTML().replace(new RegExp(tatNick.textStrokeColor, 'g'), newColor);
                       if (testHTML.length > 250) {
                         showToast('שינוי צבע הקו יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                         return;
                       }
-                      setNickname(prev => ({ ...prev, textStrokeColor: newColor }));
+                      setTatNick(prev => ({ ...prev, textStrokeColor: newColor }));
                     }}
                   />
                   <input
                     type="text"
                     className="text-input-small"
-                    value={nickname.textStrokeColor}
+                    value={tatNick.textStrokeColor}
                     onChange={(e) => {
                       const newColor = e.target.value;
-                      const testHTML = generateHTML().replace(new RegExp(nickname.textStrokeColor, 'g'), newColor);
+                      const testHTML = generateHTML().replace(new RegExp(tatNick.textStrokeColor, 'g'), newColor);
                       if (testHTML.length > 250) {
                         showToast('שינוי צבע הקו יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                         return;
                       }
-                      setNickname(prev => ({ ...prev, textStrokeColor: newColor }));
+                      setTatNick(prev => ({ ...prev, textStrokeColor: newColor }));
                     }}
                     placeholder="#000000"
                   />
@@ -2485,7 +2485,7 @@ const App: React.FC = () => {
                 type="range"
                 min="0"
                 max="200"
-                value={nickname.brightness}
+                value={tatNick.brightness}
                 onChange={(e) => {
                   const newBrightness = parseInt(e.target.value);
                   const testHTML = generateHTML().replace(/brightness\(\d+%\)/, `brightness(${newBrightness}%)`);
@@ -2493,10 +2493,10 @@ const App: React.FC = () => {
                     showToast('שינוי הבהירות יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, brightness: newBrightness }));
+                  setTatNick(prev => ({ ...prev, brightness: newBrightness }));
                 }}
               />
-              <span>{nickname.brightness}%</span>
+              <span>{tatNick.brightness}%</span>
             </div>
 
             {/* Contrast */}
@@ -2506,7 +2506,7 @@ const App: React.FC = () => {
                 type="range"
                 min="0"
                 max="200"
-                value={nickname.contrast}
+                value={tatNick.contrast}
                 onChange={(e) => {
                   const newContrast = parseInt(e.target.value);
                   const testHTML = generateHTML().replace(/contrast\(\d+%\)/, `contrast(${newContrast}%)`);
@@ -2514,10 +2514,10 @@ const App: React.FC = () => {
                     showToast('שינוי הניגודיות יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, contrast: newContrast }));
+                  setTatNick(prev => ({ ...prev, contrast: newContrast }));
                 }}
               />
-              <span>{nickname.contrast}%</span>
+              <span>{tatNick.contrast}%</span>
             </div>
 
             {/* Saturate */}
@@ -2527,7 +2527,7 @@ const App: React.FC = () => {
                 type="range"
                 min="0"
                 max="200"
-                value={nickname.saturate}
+                value={tatNick.saturate}
                 onChange={(e) => {
                   const newSaturate = parseInt(e.target.value);
                   const testHTML = generateHTML().replace(/saturate\(\d+%\)/, `saturate(${newSaturate}%)`);
@@ -2535,10 +2535,10 @@ const App: React.FC = () => {
                     showToast('שינוי הרוויה יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, saturate: newSaturate }));
+                  setTatNick(prev => ({ ...prev, saturate: newSaturate }));
                 }}
               />
-              <span>{nickname.saturate}%</span>
+              <span>{tatNick.saturate}%</span>
             </div>
 
             {/* Hue Rotate */}
@@ -2548,7 +2548,7 @@ const App: React.FC = () => {
                 type="range"
                 min="0"
                 max="360"
-                value={nickname.hueRotate}
+                value={tatNick.hueRotate}
                 onChange={(e) => {
                   const newHue = parseInt(e.target.value);
                   const testHTML = generateHTML().replace(/hue-rotate\(\d+deg\)/, `hue-rotate(${newHue}deg)`);
@@ -2556,10 +2556,10 @@ const App: React.FC = () => {
                     showToast('שינוי הגוון יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, hueRotate: newHue }));
+                  setTatNick(prev => ({ ...prev, hueRotate: newHue }));
                 }}
               />
-              <span>{nickname.hueRotate}°</span>
+              <span>{tatNick.hueRotate}°</span>
             </div>
 
             {/* Invert */}
@@ -2569,7 +2569,7 @@ const App: React.FC = () => {
                 type="range"
                 min="0"
                 max="100"
-                value={nickname.invert}
+                value={tatNick.invert}
                 onChange={(e) => {
                   const newInvert = parseInt(e.target.value);
                   const testHTML = generateHTML().replace(/invert\(\d+%\)/, `invert(${newInvert}%)`);
@@ -2577,10 +2577,10 @@ const App: React.FC = () => {
                     showToast('שינוי ההיפוך יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, invert: newInvert }));
+                  setTatNick(prev => ({ ...prev, invert: newInvert }));
                 }}
               />
-              <span>{nickname.invert}%</span>
+              <span>{tatNick.invert}%</span>
             </div>
 
             {/* Sepia */}
@@ -2590,7 +2590,7 @@ const App: React.FC = () => {
                 type="range"
                 min="0"
                 max="100"
-                value={nickname.sepia}
+                value={tatNick.sepia}
                 onChange={(e) => {
                   const newSepia = parseInt(e.target.value);
                   const testHTML = generateHTML().replace(/sepia\(\d+%\)/, `sepia(${newSepia}%)`);
@@ -2598,10 +2598,10 @@ const App: React.FC = () => {
                     showToast('שינוי הספיה יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, sepia: newSepia }));
+                  setTatNick(prev => ({ ...prev, sepia: newSepia }));
                 }}
               />
-              <span>{nickname.sepia}%</span>
+              <span>{tatNick.sepia}%</span>
             </div>
           </div>
 
@@ -2616,7 +2616,7 @@ const App: React.FC = () => {
                 type="range"
                 min="0"
                 max="50"
-                value={nickname.textIndent}
+                value={tatNick.textIndent}
                 onChange={(e) => {
                   const newIndent = parseInt(e.target.value);
                   const testHTML = generateHTML().replace(/text-indent:\s*\d+px/, `text-indent: ${newIndent}px`);
@@ -2624,17 +2624,17 @@ const App: React.FC = () => {
                     showToast('שינוי ההזחה יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, textIndent: newIndent }));
+                  setTatNick(prev => ({ ...prev, textIndent: newIndent }));
                 }}
               />
-              <span>{nickname.textIndent}px</span>
+              <span>{tatNick.textIndent}px</span>
             </div>
 
             {/* White Space */}
             <div className="control-row">
               <label>טיפול ברווחים:</label>
               <select
-                value={nickname.whiteSpace}
+                value={tatNick.whiteSpace}
                 onChange={(e) => {
                   const newWhiteSpace = e.target.value as any;
                   const testHTML = generateHTML().replace(/white-space:\s*\w+/, `white-space: ${newWhiteSpace}`);
@@ -2642,7 +2642,7 @@ const App: React.FC = () => {
                     showToast('שינוי הרווחים יחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
                     return;
                   }
-                  setNickname(prev => ({ ...prev, whiteSpace: newWhiteSpace }));
+                  setTatNick(prev => ({ ...prev, whiteSpace: newWhiteSpace }));
                 }}
               >
                 <option value="normal">רגיל</option>
@@ -2665,8 +2665,8 @@ const App: React.FC = () => {
                 <input
                   type="radio"
                   name="specialEffect"
-                  checked={nickname.specialEffect === 'none'}
-                  onChange={() => setNickname(prev => ({ ...prev, specialEffect: 'none' }))}
+                  checked={tatNick.specialEffect === 'none'}
+                  onChange={() => setTatNick(prev => ({ ...prev, specialEffect: 'none' }))}
                 />
                 ללא אפקט
               </label>
@@ -2676,8 +2676,8 @@ const App: React.FC = () => {
                 <input
                   type="radio"
                   name="specialEffect"
-                  checked={nickname.specialEffect === 'guystyle'}
-                  onChange={() => setNickname(prev => ({ ...prev, specialEffect: 'guystyle' }))}
+                  checked={tatNick.specialEffect === 'guystyle'}
+                  onChange={() => setTatNick(prev => ({ ...prev, specialEffect: 'guystyle' }))}
                 />
                 גיא סטייל
               </label>
@@ -2687,8 +2687,8 @@ const App: React.FC = () => {
                 <input
                   type="radio"
                   name="specialEffect"
-                  checked={nickname.specialEffect === 'abir'}
-                  onChange={() => setNickname(prev => ({ ...prev, specialEffect: 'abir' }))}
+                  checked={tatNick.specialEffect === 'abir'}
+                  onChange={() => setTatNick(prev => ({ ...prev, specialEffect: 'abir' }))}
                 />
                 אביר (מחליף צבעים)
               </label>
