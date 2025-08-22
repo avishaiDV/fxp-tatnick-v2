@@ -1301,17 +1301,6 @@ const App: React.FC = () => {
                     <LogOut size={16} />
                     התנתק
                   </button>
-                  {userData && selectedUserRank !== originalUserRank && (
-                    <div className="control-row">
-                      <button
-                        onClick={resetToOriginalRank}
-                        className="reset-rank-btn"
-                        title={`חזור לדרגה המקורית: ${USER_RANKS[originalUserRank]}`}
-                      >
-                        חזור לדרגה המקורית
-                      </button>
-                    </div>
-                  )}
                 </>
               ) : (
                 <div>
@@ -1596,7 +1585,7 @@ const App: React.FC = () => {
                   checked={tatNick.multiColor}
                   onChange={toggleMultiColor}
                 />
-                תת ניק עם 2 צבעים
+                תת ניק צבעוני (עד 3 צבעים שונים)
               </label>
             </div>
             
