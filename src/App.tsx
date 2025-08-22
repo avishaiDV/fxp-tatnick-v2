@@ -289,6 +289,10 @@ const App: React.FC = () => {
   const [selectedUserRank, setSelectedUserRank] = useState<keyof typeof USER_RANKS>('user_nick_s1');
   const [originalUserRank, setOriginalUserRank] = useState<keyof typeof USER_RANKS>('user_nick_s1');
   
+  // Editor mode toggle and manual code state
+  const [editorMode, setEditorMode] = useState<'automatic' | 'manual'>('automatic');
+  const [manualCode, setManualCode] = useState<string>('');
+  
   // Toast notifications
   const [toast, setToast] = useState<{
     show: boolean;
@@ -300,7 +304,7 @@ const App: React.FC = () => {
     type: 'info'
   });
 
-     const MAX_CHARACTERS = 250;
+  const MAX_CHARACTERS = 250;
 
   // Load user data from cookies on component mount
   useEffect(() => {
@@ -327,6 +331,14 @@ const App: React.FC = () => {
 
   const eraseCookie = (name: string) => {
     createCookie(name, '', -1);
+  };
+
+  // Returns the HTML to use based on current editor mode
+  const getOutputHTML = (): string => {
+    if (editorMode === 'manual') {
+      return manualCode || '';
+    }
+    return generateHTML();
   };
 
   const loadUser = async (username: string) => {
@@ -693,17 +705,16 @@ const App: React.FC = () => {
         ...prev,
         multiColor: false,
         text: fullText,
-        textParts: [{ text: fullText, color: prev.color }]
       }));
     }
   };
 
-   // Calculate current length after generateHTML is defined
-   const currentLength = generateHTML().length;
+  // Calculate current length after generateHTML is defined
+  const currentLength = editorMode === 'manual' ? (manualCode || '').length : generateHTML().length;
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(generateHTML());
+      await navigator.clipboard.writeText(getOutputHTML());
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -1096,7 +1107,7 @@ const App: React.FC = () => {
                       </div>
                       <img class="inlineimg onlinestatus loading" src="https://fxp.co.il/clear.gif" alt="${userData?.username || 'משתמש מנותק'} מנותק" border="0" style="background-color: #A8A8A8;" title="${userData?.username || 'משתמש מנותק'} מנותק" data-ll-status="loading">
                       <span class="usertitle">
-                        ${generateHTML()}
+                        ${getOutputHTML()}
                       </span>
                       <div class="imlinks"></div>
                     </div>
@@ -1232,7 +1243,7 @@ const App: React.FC = () => {
                   <span class="member_status"><img class="inlineimg onlinestatus loading" src="https://fxp.co.il/clear.gif" alt="${userData?.username || 'משתמש מנותק'} מחובר/ת כרגע" border="0" style="background-color: #9BDC00;" title="${userData?.username || 'משתמש מנותק'} מחובר/ת כרגע" data-ll-status="loading">
                   </span>
                                      <br>
-                   <span class="usertitle">${generateHTML()}</span>
+                   <span class="usertitle">${getOutputHTML()}</span>
                  </span>
                </h1>
                <div id="userinfoblock" class="floatcontainer">
@@ -1276,9 +1287,9 @@ const App: React.FC = () => {
             <div className="user-info">
               {userData ? (
                 <>
-                  <img 
-                    src={userData.profileImage} 
-                    alt="Profile" 
+                  <img
+                    src={userData.profileImage}
+                    alt="Profile"
                     className="user-avatar"
                     onError={(e) => {
                       e.currentTarget.src = 'https://static.fcdn.co.il/dyn/projects/privatemessage/icons/usericonprofile.svg';
@@ -1289,19 +1300,28 @@ const App: React.FC = () => {
                     <LogOut size={16} />
                     התנתק
                   </button>
+                  {userData && selectedUserRank !== originalUserRank && (
+                    <div className="control-row">
+                      <button
+                        onClick={resetToOriginalRank}
+                        className="reset-rank-btn"
+                        title={`חזור לדרגה המקורית: ${USER_RANKS[originalUserRank]}`}
+                      >
+                        חזור לדרגה המקורית
+                      </button>
+                    </div>
+                  )}
                 </>
               ) : (
+                <div>
                 <button onClick={handleUserLogin} className="login-btn">
                   <LogIn size={16} />
                   התחבר למשתמש
-                </button>
-                          )}
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
-
-        </div>
-
-
-
 
           {/* Login Popup */}
           {showLoginPopup && (
@@ -1350,48 +1370,101 @@ const App: React.FC = () => {
             </div>
           )}
 
-          {/* Text Input */}
-          <div className="input-group">
-            <label>טקסט התת ניק:</label>
-            <textarea
-              value={tatNick.text || ''}
-              onChange={(e) => {
-                const newText = e.target.value;
-                
-                // Check if this would exceed 250 characters
-                if (tatNick.multiColor) {
-                  // For multi-color, check the full HTML
-                  const testParts = tatNick.textParts.map(part => 
-                    part.text === tatNick.text ? newText : part.text
-                  );
-                  const testHTML = testParts.map(part => 
-                    `<font color="${tatNick.color}">${part}</font>`
-                  ).join('');
-                  
-                  if (testHTML.length > 250) {
-                    showToast('הטקסט חורג מ-250 תווים. אנא קצר אותו.', 'error');
-                    return;
-                  }
-                } else {
-                  // For single color, check simple span
-                  const testHTML = `<span style="color: ${tatNick.color}">${newText}</span>`;
-                  if (testHTML.length > 250) {
-                    showToast('הטקסט חורג מ-250 תווים. אנא קצר אותו.', 'error');
-                    return;
-                  }
-                }
-                
-                setTatNick(prev => ({ ...prev, text: newText }));
-              }}
-              placeholder="הקלד את התת ניק שלך כאן... (ברירת מחדל: משתמש FXP)"
-              className="text-input"
-            />
-            <div className="char-counter">
-              {currentLength}/{MAX_CHARACTERS} תווים
+          {/* Editor Mode Toggle */}
+          <div className="controls-section">
+            <h3>מצב עורך</h3>
+            <div className="control-row">
+              <label>
+                <input
+                  type="radio"
+                  name="editorMode"
+                  value="automatic"
+                  checked={editorMode === 'automatic'}
+                  onChange={() => setEditorMode('automatic')}
+                />
+                חזותי אוטומטי
+              </label>
+              <label style={{ marginRight: '12px' }}>
+                <input
+                  type="radio"
+                  name="editorMode"
+                  value="manual"
+                  checked={editorMode === 'manual'}
+                  onChange={() => setEditorMode('manual')}
+                />
+                קוד ידני
+              </label>
             </div>
           </div>
 
-          {/* User Rank Selection */}
+          {/* Manual Mode Textarea */}
+          {editorMode === 'manual' && (
+            <div className="input-group">
+              <label>קוד HTML ידני (עד {MAX_CHARACTERS} תווים):</label>
+              <textarea
+                value={manualCode}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val.length > MAX_CHARACTERS) {
+                    showToast('הקוד חורג מ-250 תווים. אנא קצר אותו.', 'error');
+                    setManualCode(val.slice(0, MAX_CHARACTERS));
+                    return;
+                  }
+                  setManualCode(val);
+                }}
+                placeholder="הדבק או כתוב כאן את קוד ה-HTML של התת ניק..."
+                className="text-input"
+              />
+              <div className="char-counter">
+                {manualCode.length}/{MAX_CHARACTERS} תווים
+              </div>
+            </div>
+          )}
+
+          {/* Text Input - Automatic Mode */}
+          {editorMode === 'automatic' && (
+            <div className="input-group">
+              <label>טקסט התת ניק:</label>
+              <textarea
+                value={tatNick.text || ''}
+                onChange={(e) => {
+                  const newText = e.target.value;
+                  
+                  // Check if this would exceed 250 characters
+                  if (tatNick.multiColor) {
+                    // For multi-color, check the full HTML
+                    const testParts = tatNick.textParts.map(part => 
+                      part.text === tatNick.text ? newText : part.text
+                    );
+                    const testHTML = testParts.map(part => 
+                      `<font color="${tatNick.color}">${part}</font>`
+                    ).join('');
+                    
+                    if (testHTML.length > 250) {
+                      showToast('הטקסט חורג מ-250 תווים. אנא קצר אותו.', 'error');
+                      return;
+                    }
+                  } else {
+                    // For single color, check simple span
+                    const testHTML = `<span style=\"color: ${tatNick.color}\">${newText}</span>`;
+                    if (testHTML.length > 250) {
+                      showToast('הטקסט חורג מ-250 תווים. אנא קצר אותו.', 'error');
+                      return;
+                    }
+                  }
+                  
+                  setTatNick(prev => ({ ...prev, text: newText }));
+                }}
+                placeholder="הקלד את התת ניק שלך כאן... (ברירת מחדל: משתמש FXP)"
+                className="text-input"
+              />
+              <div className="char-counter">
+                {currentLength}/{MAX_CHARACTERS} תווים
+              </div>
+            </div>
+          )}
+
+          {/* User Rank Selection - Always visible */}
           <div className="controls-section">
             <h3>דרגת משתמש</h3>
             <div className="control-row">
@@ -1420,7 +1493,10 @@ const App: React.FC = () => {
             )}
           </div>
 
-                    {/* Font Selection */}
+          {/* Show the rest of controls only in automatic mode */}
+          {editorMode === 'automatic' && (
+            <>
+            {/* Font Selection */}
           <div className="controls-section">
             <h3>פונט</h3>
             <div className="control-row">
@@ -2717,10 +2793,13 @@ const App: React.FC = () => {
               ייבא קוד
             </button>
           </div>
-        </div>
+        {/* End of automatic-only controls */}
+        </>
+        )}
+      </div>
 
-        {/* Preview Panel */}
-        <div className="preview-panel">
+      {/* Preview Panel */}
+      <div className="preview-panel">
           <div className="panel-header">
             <Eye size={20} />
             <h2>תצוגה מקדימה</h2>
@@ -2779,7 +2858,7 @@ const App: React.FC = () => {
               <div className="preview-section">
                 <h3>קוד HTML</h3>
                 <div className="html-output">
-                  <code>{generateHTML()}</code>
+                  <code>{getOutputHTML()}</code>
                   <button onClick={copyToClipboard} className="copy-btn">
                     <Copy size={16} />
                     {copied ? 'הועתק!' : 'העתק'}

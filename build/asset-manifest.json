@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/fxp-tatnick-v2/static/css/main.633ea888.css",
+    "main.js": "/fxp-tatnick-v2/static/js/main.f10b698a.js",
+    "index.html": "/fxp-tatnick-v2/index.html",
+    "main.633ea888.css.map": "/fxp-tatnick-v2/static/css/main.633ea888.css.map",
+    "main.f10b698a.js.map": "/fxp-tatnick-v2/static/js/main.f10b698a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.633ea888.css",
+    "static/js/main.f10b698a.js"
+  ]
+}
