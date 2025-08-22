@@ -626,8 +626,8 @@ const App: React.FC = () => {
 
      const addTextPart = () => {
     // Check if already have 2 colors (maximum allowed)
-    if (tatNick.textParts.length >= 2) {
-      showToast('לא ניתן להוסיף יותר מ-2 צבעים. המקסימום הוא 2 צבעים בלבד.', 'error');
+    if (tatNick.textParts.length >= 3) {
+      showToast('לא ניתן להוסיף יותר מ-3 צבעים. המקסימום הוא 3 צבעים בלבד.', 'error');
       return;
     }
     
@@ -1603,8 +1603,8 @@ const App: React.FC = () => {
             {tatNick.multiColor && (
               <div className="multi-color-controls">
                 <div className="control-row">
-                  <label>חלקי טקסט (מקסימום 2):</label>
-                  {tatNick.textParts.length < 2 && (
+                  <label>חלקי טקסט (מקסימום 3):</label>
+                  {tatNick.textParts.length < 3 && (
                     <button 
                       type="button" 
                       className="add-part-btn"
