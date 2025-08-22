@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Copy, Eye, Code, Palette, Type, Sparkles, User, LogOut, LogIn, CheckCircle, AlertCircle, Info, X } from 'lucide-react';
+import { Copy, Eye, Palette, LogOut, LogIn, CheckCircle, AlertCircle, Info, X } from 'lucide-react';
 import './App.css';
 
 interface NicknameStyle {
@@ -985,15 +985,7 @@ const App: React.FC = () => {
      });
    };
 
-  const fxpPreviewStyle = {
-    backgroundColor: '#2c2c2c',
-    color: '#ffffff',
-    padding: '20px',
-    borderRadius: '8px',
-    fontFamily: 'Arial, sans-serif',
-    fontSize: '14px',
-    lineHeight: '1.4'
-  };
+  // Removed unused fxpPreviewStyle
 
   // Generate FXP Comment Preview HTML
   const generateFXPCommentPreview = () => {
@@ -2010,7 +2002,6 @@ const App: React.FC = () => {
                   onChange={(e) => {
                     const newGlow = e.target.checked;
                     // Create a test HTML with glow effect
-                    const testNickname = { ...nickname, glow: newGlow };
                     const testHTML = generateHTML();
                     if (testHTML.length > 250) {
                       showToast('הוספת זוהר תחרוג מ-250 תווים. אנא קצר את הטקסט תחילה.', 'error');
